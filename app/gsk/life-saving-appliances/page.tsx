@@ -280,6 +280,12 @@ export default function LifeSavingAppliancesPage() {
           >
             All GSK Topics
           </Link>
+          <Link
+  href="/gsk/fire-fighting-safety"
+  className="rounded-xl bg-cyan-500 px-5 py-3 text-center font-bold text-slate-950"
+>
+  Next Topic →
+</Link>
         </div>
       </section>
 

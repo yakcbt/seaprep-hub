@@ -271,9 +271,12 @@ export default function ShipFamiliarizationPage() {
             ← All GSK Topics
           </Link>
 
-          <button className="rounded-xl bg-cyan-500 px-5 py-3 font-bold text-slate-950">
-            Next Topic →
-          </button>
+          <Link
+  href="/gsk/deck-equipment"
+  className="rounded-xl bg-cyan-500 px-5 py-3 font-bold text-slate-950"
+>
+  Next Topic →
+</Link>
         </div>
       </section>
 

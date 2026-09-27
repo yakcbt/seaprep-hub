@@ -243,6 +243,12 @@ export default function DeckEquipmentPage() {
           >
             All GSK Topics
           </Link>
+          <Link
+  href="/gsk/ropes-knots"
+  className="rounded-xl bg-cyan-500 px-5 py-3 text-center font-bold text-slate-950"
+>
+  Next Topic →
+</Link>
         </div>
       </section>
 

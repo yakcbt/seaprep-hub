@@ -387,6 +387,12 @@ export default function SeamanshipPage() {
           >
             All GSK Topics
           </Link>
+          <Link
+  href="/gsk/practice-cbt"
+  className="rounded-xl bg-cyan-500 px-5 py-3 text-center font-bold text-slate-950"
+>
+  Start Practice CBT →
+</Link>
         </div>
       </section>
 
