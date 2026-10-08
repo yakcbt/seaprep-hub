@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Question = {
   question: string;
@@ -428,11 +428,44 @@ const questionBank: Question[] = [
 ];
 
 function shuffle<T>(array: T[]): T[] {
-  return [...array].sort(() => Math.random() - 0.5);
+  const shuffled = [...array];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
 }
 
+function shuffleQuestionOptions(question: Question): Question {
+  const correctAnswer = question.options[question.answer];
+
+  const options = shuffle(question.options);
+
+  return {
+    ...question,
+    options,
+    answer: options.indexOf(correctAnswer),
+  };
+}
+
+
 export default function FPFFPracticeCBT() {
-  const questions = useMemo(() => shuffle(questionBank).slice(0, 30), []);
+  const [mounted, setMounted] = useState(false);
+  
+const questions = useMemo(
+  () => shuffle(questionBank).slice(0, 30).map(shuffleQuestionOptions),
+  []
+);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
+
+  
+
 
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(
@@ -460,7 +493,13 @@ export default function FPFFPracticeCBT() {
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
+if (!mounted) {
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <p>Loading Practice CBT...</p>
+    </main>
+  );
+}
   if (submitted) {
     return (
       <main className="min-h-screen bg-slate-50 px-5 py-10">

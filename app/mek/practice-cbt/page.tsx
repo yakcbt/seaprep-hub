@@ -592,16 +592,37 @@ const questionBank: Question[] = [
   },
 ];
 
-function shuffleQuestions(items: Question[]) {
-  const shuffled = [...items];
 
+function shuffleQuestions(items: Question[]): Question[] {
+  const shuffled = items.map((question) => {
+    const correctAnswer = question.options[question.answer];
+
+    const options = [...question.options];
+
+    // Shuffle answer options
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+
+    return {
+      ...question,
+      options,
+      answer: options.indexOf(correctAnswer),
+    };
+  });
+
+  // Shuffle questions
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
+
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
   return shuffled.slice(0, QUESTION_COUNT);
 }
+
 
 export default function MEKPracticeCBT() {
   const [questions, setQuestions] = useState<Question[]>([]);

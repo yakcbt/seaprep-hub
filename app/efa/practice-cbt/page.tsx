@@ -426,8 +426,23 @@ const TOTAL_QUESTIONS = 30;
 const TEST_TIME = 30 * 60;
 const PASS_MARK = 18;
 
-function shuffleQuestions(array: Question[]) {
-  const copy = [...array];
+
+function shuffleQuestions(array: Question[]): Question[] {
+  const copy = array.map((question) => {
+    const correctAnswer = question.options[question.answer];
+    const options = [...question.options];
+
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+
+    return {
+      ...question,
+      options,
+      answer: options.indexOf(correctAnswer),
+    };
+  });
 
   for (let i = copy.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -437,8 +452,16 @@ function shuffleQuestions(array: Question[]) {
   return copy.slice(0, TOTAL_QUESTIONS);
 }
 
+
 export default function EFAPracticeCBT() {
+  
+const [mounted, setMounted] = useState(false);
+
   const questions = useMemo(() => shuffleQuestions(questionBank), []);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(
@@ -504,6 +527,14 @@ export default function EFAPracticeCBT() {
       "0"
     )}`;
   }
+
+if (!mounted) {
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <p>Loading Practice CBT...</p>
+    </main>
+  );
+}
 
   if (submitted) {
     return (

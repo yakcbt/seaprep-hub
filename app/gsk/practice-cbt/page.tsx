@@ -623,17 +623,33 @@ const questionBank: Question[] = [
   },
 ];
 
-function shuffleQuestions(items: Question[]) {
-  const shuffled = [...items];
+function shuffleQuestions(items: Question[]): Question[] {
+  const shuffled = items.map((question) => {
+    const correctAnswer = question.options[question.answer];
+
+    const options = [...question.options];
+
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+
+    return {
+      ...question,
+      options,
+      answer: options.indexOf(correctAnswer),
+    };
+  });
 
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
+
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
   return shuffled.slice(0, QUESTION_COUNT);
 }
-
 export default function GSKPracticeCBT() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<Record<number, number>>({});

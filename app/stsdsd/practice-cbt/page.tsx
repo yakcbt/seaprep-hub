@@ -485,6 +485,7 @@ function shuffle<T>(items: T[]) {
 }
 
 export default function STSDSDPracticeCBT() {
+  const [mounted, setMounted] = useState(false);
   const questions = useMemo(
     () =>
       shuffle(questionBank)
@@ -502,7 +503,9 @@ export default function STSDSDPracticeCBT() {
         })),
     []
   );
-
+useEffect(() => {
+  setMounted(true);
+}, []);
   const [candidateName, setCandidateName] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [answers, setAnswers] = useState<(number | null)[]>(
@@ -575,7 +578,13 @@ export default function STSDSDPracticeCBT() {
   const passMark = 18;
   const passed = finalScore >= passMark;
   const percentage = Math.round((finalScore / 30) * 100);
-
+if (!mounted) {
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <p>Loading Practice CBT...</p>
+    </main>
+  );
+}
   if (submitted) {
     return (
       <main className="min-h-screen bg-slate-50 px-5 py-10">

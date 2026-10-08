@@ -437,17 +437,43 @@ const questionBank: Question[] = [
   },
 ];
 
-function shuffle<T>(items: T[]) {
-  return [...items].sort(() => Math.random() - 0.5);
+function shuffle<T>(items: T[]): T[] {
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
 }
+
+function shuffleQuestionOptions(question: Question): Question {
+  const correctAnswer = question.options[question.answer];
+
+  const options = shuffle(question.options);
+
+  return {
+    ...question,
+    options,
+    answer: options.indexOf(correctAnswer),
+  };
+}
+
 
 const TEST_TIME = 30 * 60;
 
 export default function PSTPracticeCBT() {
+  const [mounted, setMounted] = useState(false);
   const questions = useMemo(
     () => shuffle(questionBank).slice(0, 30),
     []
   );
+
+useEffect(() => {
+  setMounted(true);
+}, []);
 
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(
@@ -506,6 +532,14 @@ export default function PSTPracticeCBT() {
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+if (!mounted) {
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <p>Loading Practice CBT...</p>
+    </main>
+  );
+}
 
   if (submitted) {
     return (
