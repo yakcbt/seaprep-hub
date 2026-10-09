@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -10,529 +11,69 @@ type Question = {
 };
 
 const questionBank: Question[] = [
-  {
-    question: "What is the general emergency alarm signal on board ship?",
-    options: [
-      "One long blast",
-      "Seven short blasts followed by one long blast",
-      "Three short blasts",
-      "Continuous ringing only",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Where is the general alarm system activation point located?",
-    options: [
-      "Engine room",
-      "Galley",
-      "Navigation bridge",
-      "Steering gear room",
-    ],
-    answer: 2,
-  },
-  {
-    question: "What should crew members do when the general alarm is sounded?",
-    options: [
-      "Return to cabin",
-      "Proceed to designated muster station",
-      "Leave the ship immediately",
-      "Go to engine room",
-    ],
-    answer: 1,
-  },
-  {
-    question: "What informs crew members about their emergency duties?",
-    options: [
-      "Cargo plan",
-      "Muster list",
-      "Deck logbook",
-      "Engine logbook",
-    ],
-    answer: 1,
-  },
-  {
-    question: "What is a muster station?",
-    options: [
-      "Cargo loading point",
-      "Designated meeting point during an emergency",
-      "Navigation station",
-      "Engine control station",
-    ],
-    answer: 1,
-  },
-  {
-    question: "The Muster List should be ready:",
-    options: [
-      "After departure",
-      "Before the ship proceeds to sea",
-      "Only during drills",
-      "After an emergency",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Where may the Muster List be displayed?",
-    options: [
-      "Bridge only",
-      "Engine room only",
-      "Cabins only",
-      "Conspicuous locations on board",
-    ],
-    answer: 3,
-  },
-  {
-    question: "Which is an objective of a shipboard emergency plan?",
-    options: [
-      "Increase cargo quantity",
-      "Minimize damage to property and environment",
-      "Reduce crew numbers",
-      "Increase ship speed",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Which situation may be included in a contingency plan?",
-    options: [
-      "Fire",
-      "Collision",
-      "Grounding",
-      "All of these",
-    ],
-    answer: 3,
-  },
-  {
-    question: "Emergency alarms on ships may be:",
-    options: [
-      "Audible only",
-      "Visual only",
-      "Audible and visual",
-      "Written only",
-    ],
-    answer: 2,
-  },
+  { question: "What is the general emergency alarm signal on board ship?", options: ["One long blast", "Seven short blasts followed by one long blast", "Three short blasts", "Continuous ringing only"], answer: 1 },
+  { question: "Where is the general alarm system activation point located?", options: ["Engine room", "Galley", "Navigation bridge", "Steering gear room"], answer: 2 },
+  { question: "What should crew members do when the general alarm is sounded?", options: ["Return to cabin", "Proceed to designated muster station", "Leave the ship immediately", "Go to engine room"], answer: 1 },
+  { question: "What informs crew members about their emergency duties?", options: ["Cargo plan", "Muster list", "Deck logbook", "Engine logbook"], answer: 1 },
+  { question: "What is a muster station?", options: ["Cargo loading point", "Designated meeting point during an emergency", "Navigation station", "Engine control station"], answer: 1 },
+  { question: "The Muster List should be ready:", options: ["After departure", "Before the ship proceeds to sea", "Only during drills", "After an emergency"], answer: 1 },
+  { question: "Where may the Muster List be displayed?", options: ["Bridge only", "Engine room only", "Cabins only", "Conspicuous locations on board"], answer: 3 },
+  { question: "Which is an objective of a shipboard emergency plan?", options: ["Increase cargo quantity", "Minimize damage to property and environment", "Reduce crew numbers", "Increase ship speed"], answer: 1 },
+  { question: "Which situation may be included in a contingency plan?", options: ["Fire", "Collision", "Grounding", "All of these"], answer: 3 },
+  { question: "Emergency alarms on ships may be:", options: ["Audible only", "Visual only", "Audible and visual", "Written only"], answer: 2 },
 
-  {
-    question: "Good shipboard human relationships depend strongly on:",
-    options: [
-      "Isolation",
-      "Teamwork and communication",
-      "Competition between crew",
-      "Avoiding all communication",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Discrimination may damage:",
-    options: [
-      "Team cohesion",
-      "Ship paint",
-      "Cargo capacity",
-      "Propeller speed",
-    ],
-    answer: 0,
-  },
-  {
-    question: "On multinational ships, what may cause misunderstanding?",
-    options: [
-      "Cultural bias and language barriers",
-      "Correct communication",
-      "Team activities",
-      "Mutual support",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Effective leaders should use their authority to:",
-    options: [
-      "Intimidate crew",
-      "Manipulate crew",
-      "Guide and protect",
-      "Demand personal favours",
-    ],
-    answer: 2,
-  },
-  {
-    question: "Which can reduce the negative effects of isolation?",
-    options: [
-      "Avoiding everyone",
-      "Social interaction and mutual support",
-      "Increasing conflict",
-      "Stopping communication",
-    ],
-    answer: 1,
-  },
+  { question: "Good shipboard human relationships depend strongly on:", options: ["Isolation", "Teamwork and communication", "Competition between crew", "Avoiding all communication"], answer: 1 },
+  { question: "Discrimination may damage:", options: ["Team cohesion", "Ship paint", "Cargo capacity", "Propeller speed"], answer: 0 },
+  { question: "On multinational ships, what may cause misunderstanding?", options: ["Cultural bias and language barriers", "Correct communication", "Team activities", "Mutual support"], answer: 0 },
+  { question: "Effective leaders should use their authority to:", options: ["Intimidate crew", "Manipulate crew", "Guide and protect", "Demand personal favours"], answer: 2 },
+  { question: "Which can reduce the negative effects of isolation?", options: ["Avoiding everyone", "Social interaction and mutual support", "Increasing conflict", "Stopping communication"], answer: 1 },
 
-  {
-    question: "Fatigue can impair:",
-    options: [
-      "Judgment",
-      "Ship stability",
-      "Radio frequency",
-      "Cargo capacity",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Fatigue may increase:",
-    options: [
-      "Self-control",
-      "Irritability",
-      "Rest",
-      "Concentration",
-    ],
-    answer: 1,
-  },
-  {
-    question: "A fatigued person may:",
-    options: [
-      "Always make better decisions",
-      "Misinterpret comments",
-      "Never become irritated",
-      "Need less sleep",
-    ],
-    answer: 1,
-  },
-  {
-    question: "A proper sleep routine helps prevent:",
-    options: [
-      "Fatigue-related behavioural issues",
-      "Ship corrosion",
-      "Cargo damage only",
-      "Propeller vibration",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Compliance with hours of work and rest is important for:",
-    options: [
-      "Preventing fatigue",
-      "Increasing noise",
-      "Reducing accommodation",
-      "Increasing cargo",
-    ],
-    answer: 0,
-  },
+  { question: "Fatigue can impair:", options: ["Judgment", "Ship stability", "Radio frequency", "Cargo capacity"], answer: 0 },
+  { question: "Fatigue may increase:", options: ["Self-control", "Irritability", "Rest", "Concentration"], answer: 1 },
+  { question: "A fatigued person may:", options: ["Always make better decisions", "Misinterpret comments", "Never become irritated", "Need less sleep"], answer: 1 },
+  { question: "A proper sleep routine helps prevent:", options: ["Fatigue-related behavioural issues", "Ship corrosion", "Cargo damage only", "Propeller vibration"], answer: 0 },
+  { question: "Compliance with hours of work and rest is important for:", options: ["Preventing fatigue", "Increasing noise", "Reducing accommodation", "Increasing cargo"], answer: 0 },
 
-  {
-    question: "MLC stands for:",
-    options: [
-      "Marine Loading Code",
-      "Maritime Labour Convention",
-      "Marine Labour Certificate",
-      "Maritime Loading Convention",
-    ],
-    answer: 1,
-  },
-  {
-    question: "The MLC 2006 entered into force on:",
-    options: [
-      "20 August 2013",
-      "1 January 2006",
-      "20 August 2006",
-      "1 January 2013",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Under MLC, employment or work on board below what age is prohibited?",
-    options: [
-      "14 years",
-      "15 years",
-      "16 years",
-      "18 years",
-    ],
-    answer: 2,
-  },
-  {
-    question: "Night work is generally prohibited for seafarers under:",
-    options: [
-      "16 years",
-      "17 years",
-      "18 years",
-      "21 years",
-    ],
-    answer: 2,
-  },
-  {
-    question: "A seafarer must hold what before beginning work on a ship?",
-    options: [
-      "Valid medical certificate",
-      "Driving licence",
-      "Tourist visa only",
-      "Cargo certificate",
-    ],
-    answer: 0,
-  },
-  {
-    question: "The normal maximum validity of a seafarer's medical certificate is:",
-    options: [
-      "6 months",
-      "1 year",
-      "2 years",
-      "5 years",
-    ],
-    answer: 2,
-  },
-  {
-    question: "For a seafarer under 18, maximum medical certificate validity is:",
-    options: [
-      "6 months",
-      "1 year",
-      "2 years",
-      "5 years",
-    ],
-    answer: 1,
-  },
-  {
-    question: "A seafarer should be allowed to review the employment agreement:",
-    options: [
-      "After signing only",
-      "Before signing",
-      "Only after joining ship",
-      "Only after completing voyage",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Seafarers should be paid:",
-    options: [
-      "Only after leaving ship",
-      "Regularly and in full",
-      "Only once a year",
-      "Only when requested",
-    ],
-    answer: 1,
-  },
-  {
-    question: "The minimum annual leave with pay stated in the handout is:",
-    options: [
-      "1 day per month",
-      "2 days per month",
-      "2.5 calendar days per month",
-      "5 days per month",
-    ],
-    answer: 2,
-  },
+  { question: "MLC stands for:", options: ["Marine Loading Code", "Maritime Labour Convention", "Marine Labour Certificate", "Maritime Loading Convention"], answer: 1 },
+  { question: "The MLC 2006 entered into force on:", options: ["20 August 2013", "1 January 2006", "20 August 2006", "1 January 2013"], answer: 0 },
+  { question: "Under MLC, employment or work on board below what age is prohibited?", options: ["14 years", "15 years", "16 years", "18 years"], answer: 2 },
+  { question: "Night work is generally prohibited for seafarers under:", options: ["16 years", "17 years", "18 years", "21 years"], answer: 2 },
+  { question: "A seafarer must hold what before beginning work on a ship?", options: ["Valid medical certificate", "Driving licence", "Tourist visa only", "Cargo certificate"], answer: 0 },
+  { question: "The normal maximum validity of a seafarer's medical certificate is:", options: ["6 months", "1 year", "2 years", "5 years"], answer: 2 },
+  { question: "For a seafarer under 18, maximum medical certificate validity is:", options: ["6 months", "1 year", "2 years", "5 years"], answer: 1 },
+  { question: "A seafarer should be allowed to review the employment agreement:", options: ["After signing only", "Before signing", "Only after joining ship", "Only after completing voyage"], answer: 1 },
+  { question: "Seafarers should be paid:", options: ["Only after leaving ship", "Regularly and in full", "Only once a year", "Only when requested"], answer: 1 },
+  { question: "The minimum annual leave with pay stated in the handout is:", options: ["1 day per month", "2 days per month", "2.5 calendar days per month", "5 days per month"], answer: 2 },
 
-  {
-    question: "Seafarers have a right to:",
-    options: [
-      "Repatriation under specified circumstances",
-      "Ignore employment agreements",
-      "Ignore safety rules",
-      "Refuse every shipboard duty",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Shipboard accommodation should promote:",
-    options: [
-      "Health and well-being",
-      "Cargo loading",
-      "Engine power",
-      "Fuel consumption",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Food and drinking water on board should be:",
-    options: [
-      "Limited regardless of voyage",
-      "Of appropriate quality, nutritional value and quantity",
-      "Provided only to officers",
-      "Purchased by crew every day",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Food during the period of engagement should be:",
-    options: [
-      "Provided free of charge",
-      "Paid for daily by seafarer",
-      "Available only in port",
-      "Provided only to officers",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Ships should carry a medicine chest and:",
-    options: [
-      "Medical equipment and medical guide",
-      "Only cargo documents",
-      "Only navigation charts",
-      "Only spare ropes",
-    ],
-    answer: 0,
-  },
+  { question: "Seafarers have a right to:", options: ["Repatriation under specified circumstances", "Ignore employment agreements", "Ignore safety rules", "Refuse every shipboard duty"], answer: 0 },
+  { question: "Shipboard accommodation should promote:", options: ["Health and well-being", "Cargo loading", "Engine power", "Fuel consumption"], answer: 0 },
+  { question: "Food and drinking water on board should be:", options: ["Limited regardless of voyage", "Of appropriate quality, nutritional value and quantity", "Provided only to officers", "Purchased by crew every day"], answer: 1 },
+  { question: "Food during the period of engagement should be:", options: ["Provided free of charge", "Paid for daily by seafarer", "Available only in port", "Provided only to officers"], answer: 0 },
+  { question: "Ships should carry a medicine chest and:", options: ["Medical equipment and medical guide", "Only cargo documents", "Only navigation charts", "Only spare ropes"], answer: 0 },
 
-  {
-    question: "Violence is the intentional use of:",
-    options: [
-      "Physical force or power",
-      "Navigation equipment",
-      "Cargo equipment",
-      "Communication equipment",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Harassment is unwanted conduct that may cause:",
-    options: [
-      "Humiliation, offense or distress",
-      "Improved morale",
-      "Better teamwork",
-      "More rest",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Bullying is:",
-    options: [
-      "Repeated unreasonable behaviour creating a risk to health and safety",
-      "Normal shipboard training",
-      "An emergency drill",
-      "A navigation procedure",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Sexual harassment includes:",
-    options: [
-      "Unwelcome sexual advances",
-      "Normal safety instruction",
-      "Emergency communication",
-      "Muster drill",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Sexual assault involves:",
-    options: [
-      "Non-consensual sexual contact or behaviour",
-      "Normal disagreement",
-      "Safety training",
-      "Work allocation",
-    ],
-    answer: 0,
-  },
+  { question: "Violence is the intentional use of:", options: ["Physical force or power", "Navigation equipment", "Cargo equipment", "Communication equipment"], answer: 0 },
+  { question: "Harassment is unwanted conduct that may cause:", options: ["Humiliation, offense or distress", "Improved morale", "Better teamwork", "More rest"], answer: 0 },
+  { question: "Bullying is:", options: ["Repeated unreasonable behaviour creating a risk to health and safety", "Normal shipboard training", "An emergency drill", "A navigation procedure"], answer: 0 },
+  { question: "Sexual harassment includes:", options: ["Unwelcome sexual advances", "Normal safety instruction", "Emergency communication", "Muster drill"], answer: 0 },
+  { question: "Sexual assault involves:", options: ["Non-consensual sexual contact or behaviour", "Normal disagreement", "Safety training", "Work allocation"], answer: 0 },
 
-  {
-    question: "The low level of the continuum of harm may include:",
-    options: [
-      "Teasing, jokes or exclusion",
-      "Physical assault only",
-      "Fire fighting",
-      "Emergency drills",
-    ],
-    answer: 0,
-  },
-  {
-    question: "The severe end of the continuum of harm may include:",
-    options: [
-      "Normal conversation",
-      "Physical violence or sexual assault",
-      "Safety meetings",
-      "Team activities",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Early recognition of harassment is important because it can:",
-    options: [
-      "Prevent escalation",
-      "Increase conflict",
-      "Stop emergency alarms",
-      "Increase fatigue",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Which shipboard factor may contribute to conflict?",
-    options: [
-      "Confined spaces",
-      "Multicultural crews",
-      "Long working hours",
-      "All of these",
-    ],
-    answer: 3,
-  },
-  {
-    question: "The ship should maintain what approach to violence and harassment?",
-    options: [
-      "Ignore minor incidents",
-      "Zero-tolerance policy",
-      "No reporting system",
-      "Private retaliation",
-    ],
-    answer: 1,
-  },
+  { question: "The low level of the continuum of harm may include:", options: ["Teasing, jokes or exclusion", "Physical assault only", "Fire fighting", "Emergency drills"], answer: 0 },
+  { question: "The severe end of the continuum of harm may include:", options: ["Normal conversation", "Physical violence or sexual assault", "Safety meetings", "Team activities"], answer: 1 },
+  { question: "Early recognition of harassment is important because it can:", options: ["Prevent escalation", "Increase conflict", "Stop emergency alarms", "Increase fatigue"], answer: 0 },
+  { question: "Which shipboard factor may contribute to conflict?", options: ["Confined spaces", "Multicultural crews", "Long working hours", "All of these"], answer: 3 },
+  { question: "The ship should maintain what approach to violence and harassment?", options: ["Ignore minor incidents", "Zero-tolerance policy", "No reporting system", "Private retaliation"], answer: 1 },
 
-  {
-    question: "Physical violence may include:",
-    options: [
-      "Hitting, pushing, slapping or kicking",
-      "Reading a safety notice",
-      "Giving normal instructions",
-      "Attending a drill",
-    ],
-    answer: 0,
-  },
-  {
-    question: "A warning sign of violence or harassment may be:",
-    options: [
-      "Declining morale",
-      "Increased tension",
-      "Frequent transfer requests",
-      "All of these",
-    ],
-    answer: 3,
-  },
-  {
-    question: "If direct intervention is safe, it should be:",
-    options: [
-      "Calm and professional",
-      "Aggressive",
-      "Violent",
-      "Secretive",
-    ],
-    answer: 0,
-  },
-  {
-    question: "If a harassment situation appears threatening, a seafarer should:",
-    options: [
-      "Ignore it",
-      "Contact an officer or responsible person",
-      "Start a fight",
-      "Spread rumours",
-    ],
-    answer: 1,
-  },
-  {
-    question: "An internal harassment report may be made to:",
-    options: [
-      "Immediate supervisor, Safety Officer or DPA",
-      "Passengers only",
-      "Port shop",
-      "Cargo receiver only",
-    ],
-    answer: 0,
-  },
-  {
-    question: "A key principle of trauma-informed response is:",
-    options: [
-      "Safety",
-      "Retaliation",
-      "Public accusation",
-      "Pressure",
-    ],
-    answer: 0,
-  },
+  { question: "Physical violence may include:", options: ["Hitting, pushing, slapping or kicking", "Reading a safety notice", "Giving normal instructions", "Attending a drill"], answer: 0 },
+  { question: "A warning sign of violence or harassment may be:", options: ["Declining morale", "Increased tension", "Frequent transfer requests", "All of these"], answer: 3 },
+  { question: "If direct intervention is safe, it should be:", options: ["Calm and professional", "Aggressive", "Violent", "Secretive"], answer: 0 },
+  { question: "If a harassment situation appears threatening, a seafarer should:", options: ["Ignore it", "Contact an officer or responsible person", "Start a fight", "Spread rumours"], answer: 1 },
+  { question: "An internal harassment report may be made to:", options: ["Immediate supervisor, Safety Officer or DPA", "Passengers only", "Port shop", "Cargo receiver only"], answer: 0 },
+  { question: "A key principle of trauma-informed response is:", options: ["Safety", "Retaliation", "Public accusation", "Pressure"], answer: 0 },
 ];
 
 const QUESTIONS_PER_TEST = 30;
 const TEST_TIME = 30 * 60;
 const PASS_PERCENTAGE = 60;
-
 
 function shuffleQuestions(items: Question[]): Question[] {
   const shuffled = items.map((question) => {
@@ -560,14 +101,12 @@ function shuffleQuestions(items: Question[]): Question[] {
 }
 
 export default function PSSRPracticeCBT() {
-  
-const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  const questions = useMemo(() => shuffleQuestions(questionBank), []);
-
-useEffect(() => {
-  setMounted(true);
-}, []);
+  const questions = useMemo(
+    () => shuffleQuestions(questionBank),
+    []
+  );
 
   const [answers, setAnswers] = useState<(number | null)[]>(
     Array(QUESTIONS_PER_TEST).fill(null)
@@ -577,12 +116,83 @@ useEffect(() => {
   const [timeLeft, setTimeLeft] = useState(TEST_TIME);
   const [submitted, setSubmitted] = useState(false);
 
+  const [candidateName, setCandidateName] = useState("");
+  const [rollNo, setRollNo] = useState("");
+  const [testStarted, setTestStarted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!testStarted || submitted) return;
+
+    if (timeLeft <= 0) {
+      setSubmitted(true);
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setTimeLeft((previous) => Math.max(0, previous - 1));
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [timeLeft, submitted, testStarted]);
+
   const score = questions.reduce((total, question, index) => {
     return total + (answers[index] === question.answer ? 1 : 0);
   }, 0);
 
-  const percentage = Math.round((score / QUESTIONS_PER_TEST) * 100);
+  const percentage = Math.round(
+    (score / QUESTIONS_PER_TEST) * 100
+  );
+
   const passed = percentage >= PASS_PERCENTAGE;
+
+  const answeredCount = answers.filter(
+    (answer) => answer !== null
+  ).length;
+
+  useEffect(() => {
+  if (!submitted || !candidateName.trim() || !rollNo.trim()) return;
+
+  const saveResult = async () => {
+    try {
+      const response = await fetch("/api/results", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          candidate_name: candidateName.trim(),
+          roll_no: rollNo.trim(),
+          course: "PSSR",
+          score: score,
+          total_questions: questions.length,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Result save failed");
+      }
+
+      console.log("PSSR result saved successfully");
+    } catch (error) {
+      console.error("PSSR result saving error:", error);
+    }
+  };
+
+  void saveResult();
+}, [submitted]);
+  function startTest() {
+    if (!candidateName.trim() || !rollNo.trim()) {
+      window.alert("Please enter Candidate Name and Roll No.");
+      return;
+    }
+
+    setTimeLeft(TEST_TIME);
+    setTestStarted(true);
+  }
 
   function submitTest() {
     if (submitted) return;
@@ -590,21 +200,6 @@ useEffect(() => {
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
-
-  useEffect(() => {
-    if (submitted) return;
-
-    if (timeLeft <= 0) {
-      submitTest();
-      return;
-    }
-
-    const timer = window.setInterval(() => {
-      setTimeLeft((previous) => previous - 1);
-    }, 1000);
-
-    return () => window.clearInterval(timer);
-  }, [timeLeft, submitted]);
 
   function selectAnswer(optionIndex: number) {
     if (submitted) return;
@@ -625,18 +220,99 @@ useEffect(() => {
     ).padStart(2, "0")}`;
   }
 
-  const answeredCount = answers.filter(
-    (answer) => answer !== null
-  ).length;
+  // SAME CONTENT ON SERVER AND FIRST CLIENT RENDER
+  if (!mounted) {
+    return (
+      <main className="flex min-h-screen items-center justify-center">
+        <p>Loading Practice CBT...</p>
+      </main>
+    );
+  }
 
-if (!mounted) {
-  return (
-    <main className="min-h-screen flex items-center justify-center">
-      <p>Loading Practice CBT...</p>
-    </main>
-  );
-}
+  // CANDIDATE DETAILS FORM
+  if (!testStarted) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-slate-50 p-5">
+        <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+          <p className="text-center text-sm font-semibold uppercase tracking-widest text-cyan-700">
+            SeaPrep Hub
+          </p>
 
+          <h1 className="mt-2 text-center text-2xl font-bold text-cyan-900">
+            PSSR Practice CBT
+          </h1>
+
+          <p className="mt-3 text-center text-sm text-slate-600">
+            30 Random Questions • 30 Minutes • Pass Mark 60%
+          </p>
+
+          <p className="mt-2 text-center text-sm text-slate-600">
+            Enter your details to start the examination.
+          </p>
+
+          <form
+            className="mt-7 space-y-5"
+            onSubmit={(event) => {
+              event.preventDefault();
+              startTest();
+            }}
+          >
+            <div>
+              <label
+                htmlFor="pssr-candidate-name"
+                className="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                Candidate Name
+              </label>
+
+              <input
+                id="pssr-candidate-name"
+                type="text"
+                placeholder="Enter candidate name"
+                value={candidateName}
+                onChange={(event) =>
+                  setCandidateName(event.target.value)
+                }
+                maxLength={100}
+                autoComplete="name"
+                required
+                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 focus:border-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-100"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="pssr-roll-no"
+                className="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                Roll No.
+              </label>
+
+              <input
+                id="pssr-roll-no"
+                type="text"
+                placeholder="Enter roll number"
+                value={rollNo}
+                onChange={(event) => setRollNo(event.target.value)}
+                maxLength={40}
+                required
+                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 focus:border-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-100"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-cyan-900 px-6 py-3 font-bold text-white hover:bg-cyan-800"
+            >
+              Start CBT
+            </button>
+          </form>
+        </section>
+      </main>
+    );
+  }
+
+  // RESULT PAGE
   if (submitted) {
     return (
       <main className="min-h-screen bg-slate-50">
@@ -654,6 +330,16 @@ if (!mounted) {
 
         <div className="mx-auto max-w-5xl space-y-6 px-5 py-8">
           <section className="rounded-2xl bg-white p-7 text-center shadow-sm">
+            <div className="mb-6 rounded-xl bg-cyan-50 p-4 text-left">
+              <p className="font-semibold text-slate-800">
+                Candidate Name: {candidateName.trim()}
+              </p>
+
+              <p className="mt-1 font-semibold text-slate-800">
+                Roll No.: {rollNo.trim()}
+              </p>
+            </div>
+
             <div className="text-5xl">
               {passed ? "🎉" : "📘"}
             </div>
@@ -690,7 +376,7 @@ if (!mounted) {
                   PASS MARK
                 </p>
                 <p className="mt-1 text-3xl font-bold text-slate-900">
-                  60%
+                  {PASS_PERCENTAGE}%
                 </p>
               </div>
             </div>
@@ -768,6 +454,7 @@ if (!mounted) {
     );
   }
 
+  // MAIN EXAM PAGE
   const question = questions[currentQuestion];
 
   return (
@@ -789,6 +476,7 @@ if (!mounted) {
               <p className="text-xs font-semibold uppercase text-cyan-200">
                 Time Remaining
               </p>
+
               <p
                 className={`text-2xl font-bold ${
                   timeLeft <= 300 ? "text-red-300" : "text-white"
@@ -803,7 +491,6 @@ if (!mounted) {
 
       <div className="mx-auto max-w-5xl px-5 py-8">
         <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
-
           {/* QUESTION AREA */}
           <section className="rounded-2xl bg-white p-6 shadow-sm">
             <div className="flex items-center justify-between gap-4">

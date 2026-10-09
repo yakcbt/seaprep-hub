@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -12,12 +13,10 @@ type Question = {
 };
 
 const QUESTION_COUNT = 50;
-const EXAM_TIME = 60 * 60; // 60 minutes
+const EXAM_TIME = 60 * 60;
+const PASS_PERCENTAGE = 60;
 
 const questionBank: Question[] = [
-  // =========================
-  // DIESEL ENGINE
-  // =========================
   {
     id: 1,
     topic: "Marine Diesel Engine",
@@ -46,12 +45,7 @@ const questionBank: Question[] = [
     id: 3,
     topic: "Marine Diesel Engine",
     question: "During which stroke is the air compressed in a four-stroke diesel engine?",
-    options: [
-      "Suction",
-      "Compression",
-      "Exhaust",
-      "Power",
-    ],
+    options: ["Suction", "Compression", "Exhaust", "Power"],
     answer: 1,
   },
   {
@@ -80,10 +74,6 @@ const questionBank: Question[] = [
     options: ["One", "Two", "Three", "Four"],
     answer: 0,
   },
-
-  // =========================
-  // ENGINE COMPONENTS
-  // =========================
   {
     id: 7,
     topic: "Engine Components",
@@ -119,7 +109,12 @@ const questionBank: Question[] = [
     id: 10,
     topic: "Engine Components",
     question: "Which engine component converts reciprocating motion into rotary motion?",
-    options: ["Piston ring", "Cylinder head", "Crankshaft", "Injector"],
+    options: [
+      "Piston ring",
+      "Cylinder head",
+      "Crankshaft",
+      "Injector",
+    ],
     answer: 2,
   },
   {
@@ -141,10 +136,6 @@ const questionBank: Question[] = [
     options: ["Flywheel", "Piston", "Fuel pump", "Alternator"],
     answer: 1,
   },
-
-  // =========================
-  // PUMPS
-  // =========================
   {
     id: 13,
     topic: "Pumps",
@@ -212,10 +203,6 @@ const questionBank: Question[] = [
     ],
     answer: 0,
   },
-
-  // =========================
-  // VALVES
-  // =========================
   {
     id: 19,
     topic: "Valves",
@@ -288,10 +275,6 @@ const questionBank: Question[] = [
     ],
     answer: 0,
   },
-
-  // =========================
-  // FUEL & LUBRICATION
-  // =========================
   {
     id: 25,
     topic: "Fuel & Lubrication",
@@ -364,10 +347,6 @@ const questionBank: Question[] = [
     ],
     answer: 1,
   },
-
-  // =========================
-  // COOLING SYSTEM
-  // =========================
   {
     id: 31,
     topic: "Cooling System",
@@ -440,10 +419,6 @@ const questionBank: Question[] = [
     ],
     answer: 0,
   },
-
-  // =========================
-  // ELECTRICAL BASICS
-  // =========================
   {
     id: 37,
     topic: "Electrical Basics",
@@ -469,7 +444,12 @@ const questionBank: Question[] = [
     id: 40,
     topic: "Electrical Basics",
     question: "Which formula represents Ohm's Law?",
-    options: ["V = I × R", "V = I + R", "R = V × I only", "P = R ÷ V"],
+    options: [
+      "V = I × R",
+      "V = I + R",
+      "R = V × I only",
+      "P = R ÷ V",
+    ],
     answer: 0,
   },
   {
@@ -491,10 +471,6 @@ const questionBank: Question[] = [
     ],
     answer: 0,
   },
-
-  // =========================
-  // ENGINE ROOM SAFETY
-  // =========================
   {
     id: 43,
     topic: "Engine Room Safety",
@@ -543,15 +519,16 @@ const questionBank: Question[] = [
     ],
     answer: 0,
   },
-
-  // =========================
-  // TOOLS & MAINTENANCE
-  // =========================
   {
     id: 47,
     topic: "Tools & Maintenance",
     question: "Which tool is commonly used for tightening nuts and bolts?",
-    options: ["Spanner", "Paint brush", "Thermometer", "Torch only"],
+    options: [
+      "Spanner",
+      "Paint brush",
+      "Thermometer",
+      "Torch only",
+    ],
     answer: 0,
   },
   {
@@ -592,17 +569,14 @@ const questionBank: Question[] = [
   },
 ];
 
-
+// RANDOM QUESTIONS + RANDOM A/B/C/D OPTIONS
 function shuffleQuestions(items: Question[]): Question[] {
   const shuffled = items.map((question) => {
     const correctAnswer = question.options[question.answer];
-
     const options = [...question.options];
 
-    // Shuffle answer options
     for (let i = options.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-
       [options[i], options[j]] = [options[j], options[i]];
     }
 
@@ -613,16 +587,13 @@ function shuffleQuestions(items: Question[]): Question[] {
     };
   });
 
-  // Shuffle questions
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
   return shuffled.slice(0, QUESTION_COUNT);
 }
-
 
 export default function MEKPracticeCBT() {
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -632,10 +603,15 @@ export default function MEKPracticeCBT() {
   const [submitted, setSubmitted] = useState(false);
   const [started, setStarted] = useState(false);
 
+  const [candidateName, setCandidateName] = useState("");
+  const [rollNo, setRollNo] = useState("");
+
+  // Shuffle only on client to prevent hydration errors
   useEffect(() => {
     setQuestions(shuffleQuestions(questionBank));
   }, []);
 
+  // Countdown starts after Start CBT
   useEffect(() => {
     if (!started || submitted) return;
 
@@ -645,21 +621,16 @@ export default function MEKPracticeCBT() {
     }
 
     const timer = window.setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          window.clearInterval(timer);
-          setSubmitted(true);
-          return 0;
-        }
-
-        return prev - 1;
-      });
+      setTimeLeft((prev) => Math.max(0, prev - 1));
     }, 1000);
 
     return () => window.clearInterval(timer);
   }, [started, submitted, timeLeft]);
 
-  const selectAnswer = (questionId: number, optionIndex: number) => {
+  const selectAnswer = (
+    questionId: number,
+    optionIndex: number
+  ) => {
     if (submitted) return;
 
     setAnswers((prev) => ({
@@ -668,16 +639,68 @@ export default function MEKPracticeCBT() {
     }));
   };
 
-  const calculateScore = () => {
-    return questions.reduce((score, question) => {
-      return answers[question.id] === question.answer
-        ? score + 1
-        : score;
-    }, 0);
+  const score = questions.reduce((total, question) => {
+    return total +
+      (answers[question.id] === question.answer ? 1 : 0);
+  }, 0);
+
+  const percentage =
+    questions.length > 0
+      ? Math.round((score / questions.length) * 100)
+      : 0;
+
+  const passed = percentage >= PASS_PERCENTAGE;
+
+  const answeredCount = Object.keys(answers).length;
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
+  const handleStart = () => {
+    if (!candidateName.trim() || !rollNo.trim()) {
+      window.alert("Please enter Candidate Name and Roll No.");
+      return;
+    }
+
+    setTimeLeft(EXAM_TIME);
+    setStarted(true);
   };
 
+useEffect(() => {
+  if (!submitted || !started || questions.length === 0) return;
+
+  const saveResult = async () => {
+    try {
+      const response = await fetch("/api/results", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          candidate_name: candidateName.trim(),
+          roll_no: rollNo.trim(),
+          course: "MEK",
+          score: score,
+          total_questions: questions.length,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Result save failed");
+      }
+
+      console.log("MEK result saved successfully");
+    } catch (error) {
+      console.error("MEK result saving error:", error);
+    }
+  };
+
+  void saveResult();
+}, [submitted]);
+
   const handleSubmit = () => {
-    const unanswered = questions.length - Object.keys(answers).length;
+    if (submitted) return;
+
+    const unanswered = questions.length - answeredCount;
 
     const message =
       unanswered > 0
@@ -697,20 +720,11 @@ export default function MEKPracticeCBT() {
     setTimeLeft(EXAM_TIME);
     setSubmitted(false);
     setStarted(false);
+    setCandidateName("");
+    setRollNo("");
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-
-  const score = calculateScore();
-
-  const percentage =
-    questions.length > 0
-      ? Math.round((score / questions.length) * 100)
-      : 0;
-
-  const passed = percentage >= 60;
 
   if (questions.length === 0) {
     return (
@@ -722,16 +736,13 @@ export default function MEKPracticeCBT() {
     );
   }
 
-  // =========================
-  // START SCREEN
-  // =========================
-
+  // CANDIDATE DETAILS + START SCREEN
   if (!started) {
     return (
       <main className="min-h-screen bg-slate-50">
         <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white">
           <div className="mx-auto max-w-5xl px-5 py-16 text-center md:py-24">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-orange-400">
+            <p className="text-sm font-bold uppercase tracking-widest text-orange-400">
               SeaPrep Hub • MEK
             </p>
 
@@ -749,14 +760,17 @@ export default function MEKPracticeCBT() {
         <section className="mx-auto max-w-4xl px-5 py-10">
           <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm md:p-10">
             <h2 className="text-2xl font-extrabold text-blue-950">
-              📝 Test Instructions
+              Test Instructions
             </h2>
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <Info title="Questions" value="50" />
               <Info title="Time" value="60 Minutes" />
               <Info title="Pass Mark" value="60%" />
-              <Info title="Question Type" value="Multiple Choice" />
+              <Info
+                title="Question Type"
+                value="Multiple Choice"
+              />
             </div>
 
             <div className="mt-8 rounded-2xl bg-blue-50 p-6">
@@ -766,20 +780,73 @@ export default function MEKPracticeCBT() {
 
               <ul className="mt-4 space-y-3 leading-7 text-slate-700">
                 <li>✓ Select one answer for each question.</li>
-                <li>✓ You can move between questions using Previous and Next.</li>
+                <li>✓ Use Previous and Next to move between questions.</li>
                 <li>✓ Use the question navigator to jump to any question.</li>
-                <li>✓ Questions are shown in random order on each attempt.</li>
-                <li>✓ The test will automatically submit when time finishes.</li>
-                <li>✓ Your correct answers and mistakes will appear after submission.</li>
+                <li>✓ Questions and A/B/C/D options change on each attempt.</li>
+                <li>✓ The timer starts after you start the CBT.</li>
+                <li>✓ The test automatically submits when time finishes.</li>
+                <li>✓ Full answer review is available after submission.</li>
               </ul>
             </div>
 
-            <button
-              onClick={() => setStarted(true)}
-              className="mt-8 w-full rounded-2xl bg-orange-500 px-6 py-4 text-lg font-extrabold text-white transition hover:bg-orange-600"
+            <form
+              className="mt-8 space-y-4"
+              onSubmit={(event) => {
+                event.preventDefault();
+                handleStart();
+              }}
             >
-              Start MEK Practice CBT →
-            </button>
+              <div>
+                <label
+                  htmlFor="mek-candidate-name"
+                  className="mb-2 block font-bold text-blue-950"
+                >
+                  Candidate Name
+                </label>
+
+                <input
+                  id="mek-candidate-name"
+                  type="text"
+                  value={candidateName}
+                  onChange={(event) =>
+                    setCandidateName(event.target.value)
+                  }
+                  placeholder="Enter Candidate Name"
+                  maxLength={100}
+                  required
+                  className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="mek-roll-no"
+                  className="mb-2 block font-bold text-blue-950"
+                >
+                  Roll No.
+                </label>
+
+                <input
+                  id="mek-roll-no"
+                  type="text"
+                  value={rollNo}
+                  onChange={(event) =>
+                    setRollNo(event.target.value)
+                  }
+                  placeholder="Enter Roll No."
+                  maxLength={40}
+                  required
+                  className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full rounded-2xl bg-orange-500 px-6 py-4 text-lg font-extrabold text-white transition hover:bg-orange-600"
+              >
+                Start MEK Practice CBT →
+              </button>
+            </form>
 
             <Link
               href="/mek"
@@ -793,16 +860,13 @@ export default function MEKPracticeCBT() {
     );
   }
 
-  // =========================
-  // RESULT + REVIEW
-  // =========================
-
+  // RESULT + ANSWER REVIEW
   if (submitted) {
     return (
       <main className="min-h-screen bg-slate-50">
         <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white">
           <div className="mx-auto max-w-5xl px-5 py-14 text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-400">
+            <p className="text-sm font-bold uppercase tracking-widest text-orange-400">
               MEK Practice CBT
             </p>
 
@@ -814,6 +878,16 @@ export default function MEKPracticeCBT() {
 
         <section className="mx-auto max-w-5xl px-5 py-10">
           <div className="rounded-3xl border border-slate-200 bg-white p-7 text-center shadow-sm md:p-10">
+            <div className="mb-6 rounded-xl bg-blue-50 p-5 text-left">
+              <p className="font-bold text-blue-950">
+                Candidate Name: {candidateName.trim()}
+              </p>
+
+              <p className="mt-2 font-bold text-blue-950">
+                Roll No.: {rollNo.trim()}
+              </p>
+            </div>
+
             <p className="text-sm font-bold uppercase tracking-widest text-slate-500">
               Your Score
             </p>
@@ -837,11 +911,12 @@ export default function MEKPracticeCBT() {
             </div>
 
             <p className="mt-5 text-slate-600">
-              Pass mark: 60% • Correct: {score} • Wrong/Unanswered:{" "}
-              {questions.length - score}
+              Pass mark: 60% • Correct: {score} •
+              Wrong/Unanswered: {questions.length - score}
             </p>
 
             <button
+              type="button"
               onClick={restartTest}
               className="mt-7 rounded-xl bg-orange-500 px-7 py-3 font-bold text-white hover:bg-orange-600"
             >
@@ -855,13 +930,15 @@ export default function MEKPracticeCBT() {
             </h2>
 
             <p className="mt-2 text-slate-600">
-              Review every question and compare your answer with the correct answer.
+              Review every question and compare your answer with
+              the correct answer.
             </p>
 
             <div className="mt-6 space-y-5">
               {questions.map((question, index) => {
                 const selected = answers[question.id];
-                const correct = selected === question.answer;
+                const correct =
+                  selected === question.answer;
 
                 return (
                   <div
@@ -887,46 +964,50 @@ export default function MEKPracticeCBT() {
                     </h3>
 
                     <div className="mt-5 space-y-2">
-                      {question.options.map((option, optionIndex) => {
-                        const isCorrect =
-                          optionIndex === question.answer;
+                      {question.options.map(
+                        (option, optionIndex) => {
+                          const isCorrect =
+                            optionIndex === question.answer;
 
-                        const isSelected =
-                          optionIndex === selected;
+                          const isSelected =
+                            optionIndex === selected;
 
-                        let className =
-                          "rounded-xl border border-slate-200 bg-white p-3";
+                          let className =
+                            "rounded-xl border border-slate-200 bg-white p-3";
 
-                        if (isCorrect) {
-                          className =
-                            "rounded-xl border border-green-400 bg-green-100 p-3 font-bold text-green-800";
-                        } else if (isSelected) {
-                          className =
-                            "rounded-xl border border-red-400 bg-red-100 p-3 font-bold text-red-800";
+                          if (isCorrect) {
+                            className =
+                              "rounded-xl border border-green-400 bg-green-100 p-3 font-bold text-green-800";
+                          } else if (isSelected) {
+                            className =
+                              "rounded-xl border border-red-400 bg-red-100 p-3 font-bold text-red-800";
+                          }
+
+                          return (
+                            <div
+                              key={optionIndex}
+                              className={className}
+                            >
+                              {String.fromCharCode(
+                                65 + optionIndex
+                              )}
+                              . {option}
+
+                              {isCorrect && (
+                                <span className="ml-2">
+                                  ✓ Correct Answer
+                                </span>
+                              )}
+
+                              {isSelected && !isCorrect && (
+                                <span className="ml-2">
+                                  ✗ Your Answer
+                                </span>
+                              )}
+                            </div>
+                          );
                         }
-
-                        return (
-                          <div
-                            key={option}
-                            className={className}
-                          >
-                            {String.fromCharCode(65 + optionIndex)}.{" "}
-                            {option}
-
-                            {isCorrect && (
-                              <span className="ml-2">
-                                ✓ Correct Answer
-                              </span>
-                            )}
-
-                            {isSelected && !isCorrect && (
-                              <span className="ml-2">
-                                ✗ Your Answer
-                              </span>
-                            )}
-                          </div>
-                        );
-                      })}
+                      )}
                     </div>
 
                     {selected === undefined && (
@@ -953,16 +1034,11 @@ export default function MEKPracticeCBT() {
     );
   }
 
-  // =========================
-  // CBT SCREEN
-  // =========================
-
+  // MAIN CBT SCREEN
   const question = questions[current];
-  const answeredCount = Object.keys(answers).length;
 
   return (
     <main className="min-h-screen bg-slate-100">
-      {/* TOP BAR */}
       <header className="sticky top-0 z-50 bg-slate-950 text-white shadow-lg">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4">
           <div>
@@ -1007,7 +1083,6 @@ export default function MEKPracticeCBT() {
       </header>
 
       <section className="mx-auto grid max-w-7xl gap-6 px-5 py-8 lg:grid-cols-[1fr_300px]">
-        {/* QUESTION */}
         <div>
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -1031,7 +1106,8 @@ export default function MEKPracticeCBT() {
 
                 return (
                   <button
-                    key={option}
+                    key={index}
+                    type="button"
                     onClick={() =>
                       selectAnswer(question.id, index)
                     }
@@ -1061,8 +1137,11 @@ export default function MEKPracticeCBT() {
 
             <div className="mt-8 flex items-center justify-between gap-4">
               <button
+                type="button"
                 onClick={() =>
-                  setCurrent((prev) => Math.max(0, prev - 1))
+                  setCurrent((prev) =>
+                    Math.max(0, prev - 1)
+                  )
                 }
                 disabled={current === 0}
                 className="rounded-xl border border-blue-950 px-5 py-3 font-bold text-blue-950 disabled:cursor-not-allowed disabled:opacity-30"
@@ -1072,9 +1151,13 @@ export default function MEKPracticeCBT() {
 
               {current < questions.length - 1 ? (
                 <button
+                  type="button"
                   onClick={() =>
                     setCurrent((prev) =>
-                      Math.min(questions.length - 1, prev + 1)
+                      Math.min(
+                        questions.length - 1,
+                        prev + 1
+                      )
                     )
                   }
                   className="rounded-xl bg-blue-950 px-6 py-3 font-bold text-white hover:bg-blue-900"
@@ -1083,6 +1166,7 @@ export default function MEKPracticeCBT() {
                 </button>
               ) : (
                 <button
+                  type="button"
                   onClick={handleSubmit}
                   className="rounded-xl bg-green-600 px-6 py-3 font-bold text-white hover:bg-green-700"
                 >
@@ -1093,6 +1177,7 @@ export default function MEKPracticeCBT() {
           </div>
 
           <button
+            type="button"
             onClick={handleSubmit}
             className="mt-6 w-full rounded-2xl bg-orange-500 px-6 py-4 text-lg font-extrabold text-white hover:bg-orange-600"
           >
@@ -1100,7 +1185,6 @@ export default function MEKPracticeCBT() {
           </button>
         </div>
 
-        {/* NAVIGATOR */}
         <aside className="h-fit rounded-3xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
           <h3 className="text-lg font-extrabold text-blue-950">
             Question Navigator
@@ -1116,6 +1200,7 @@ export default function MEKPracticeCBT() {
               return (
                 <button
                   key={q.id}
+                  type="button"
                   onClick={() => setCurrent(index)}
                   className={`h-10 rounded-lg text-sm font-bold ${
                     active
@@ -1136,12 +1221,10 @@ export default function MEKPracticeCBT() {
               className="bg-orange-500"
               text="Current Question"
             />
-
             <Legend
               className="bg-green-100"
               text="Answered"
             />
-
             <Legend
               className="bg-slate-100"
               text="Not Answered"
@@ -1149,7 +1232,8 @@ export default function MEKPracticeCBT() {
           </div>
 
           <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
-            You can change an answer any time before submitting the test.
+            You can change an answer any time before
+            submitting the test.
           </div>
         </aside>
       </section>

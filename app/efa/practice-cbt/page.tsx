@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -12,32 +13,17 @@ type Question = {
 const questionBank: Question[] = [
   {
     question: "What is the main purpose of First Aid?",
-    options: [
-      "To replace medical treatment",
-      "To provide immediate assistance before medical help is available",
-      "To perform surgery",
-      "To prescribe medicines",
-    ],
+    options: ["To replace medical treatment", "To provide immediate assistance before medical help is available", "To perform surgery", "To prescribe medicines"],
     answer: 1,
   },
   {
     question: "Which is an aim of First Aid?",
-    options: [
-      "To delay treatment",
-      "To save life",
-      "To increase pain",
-      "To avoid medical care",
-    ],
+    options: ["To delay treatment", "To save life", "To increase pain", "To avoid medical care"],
     answer: 1,
   },
   {
     question: "A good First Aider should be:",
-    options: [
-      "Panic-stricken",
-      "A good observer",
-      "Slow to act",
-      "Unable to control a crowd",
-    ],
+    options: ["Panic-stricken", "A good observer", "Slow to act", "Unable to control a crowd"],
     answer: 1,
   },
   {
@@ -47,12 +33,7 @@ const questionBank: Question[] = [
   },
   {
     question: "Severe bleeding should be controlled by:",
-    options: [
-      "Giving food",
-      "Applying firm pressure",
-      "Making the casualty walk",
-      "Giving alcohol",
-    ],
+    options: ["Giving food", "Applying firm pressure", "Making the casualty walk", "Giving alcohol"],
     answer: 1,
   },
   {
@@ -87,72 +68,37 @@ const questionBank: Question[] = [
   },
   {
     question: "Normal adult pulse rate stated in the handout is:",
-    options: [
-      "20–30 per minute",
-      "40–50 per minute",
-      "70–80 per minute",
-      "120–140 per minute",
-    ],
+    options: ["20–30 per minute", "40–50 per minute", "70–80 per minute", "120–140 per minute"],
     answer: 2,
   },
   {
     question: "Normal adult respiratory rate stated in the handout is:",
-    options: [
-      "4–8 per minute",
-      "8–10 per minute",
-      "16–20 per minute",
-      "30–40 per minute",
-    ],
+    options: ["4–8 per minute", "8–10 per minute", "16–20 per minute", "30–40 per minute"],
     answer: 2,
   },
   {
     question: "The recovery position is used for a casualty who is:",
-    options: [
-      "Conscious and walking",
-      "Unconscious but breathing and has a heartbeat",
-      "Not breathing",
-      "Standing normally",
-    ],
+    options: ["Conscious and walking", "Unconscious but breathing and has a heartbeat", "Not breathing", "Standing normally"],
     answer: 1,
   },
   {
     question: "One advantage of the recovery position is that it:",
-    options: [
-      "Blocks the airway",
-      "Maintains an open airway",
-      "Stops the heartbeat",
-      "Prevents circulation",
-    ],
+    options: ["Blocks the airway", "Maintains an open airway", "Stops the heartbeat", "Prevents circulation"],
     answer: 1,
   },
   {
     question: "Fowler's position is used for a casualty with:",
-    options: [
-      "Difficulty in breathing",
-      "Burns of the back only",
-      "Normal breathing",
-      "Minor finger injury",
-    ],
+    options: ["Difficulty in breathing", "Burns of the back only", "Normal breathing", "Minor finger injury"],
     answer: 0,
   },
   {
     question: "Prone position is described in the handout for:",
-    options: [
-      "Burns of the back",
-      "A sprained ankle",
-      "Minor bleeding",
-      "Normal sleep",
-    ],
+    options: ["Burns of the back", "A sprained ankle", "Minor bleeding", "Normal sleep"],
     answer: 0,
   },
   {
     question: "Unconsciousness means:",
-    options: [
-      "Complete loss of consciousness",
-      "Normal sleep only",
-      "Normal alertness",
-      "Increased appetite",
-    ],
+    options: ["Complete loss of consciousness", "Normal sleep only", "Normal alertness", "Increased appetite"],
     answer: 0,
   },
   {
@@ -162,22 +108,12 @@ const questionBank: Question[] = [
   },
   {
     question: "If breathing has stopped, the handout directs the First Aider to:",
-    options: [
-      "Make the casualty walk",
-      "Start artificial respiration",
-      "Give food",
-      "Wait for several hours",
-    ],
+    options: ["Make the casualty walk", "Start artificial respiration", "Give food", "Wait for several hours"],
     answer: 1,
   },
   {
     question: "ABC of CPR stands for:",
-    options: [
-      "Airway, Breathing, Circulation",
-      "Air, Blood, Chest",
-      "Alert, Breathing, Control",
-      "Airway, Blood, Casualty",
-    ],
+    options: ["Airway, Breathing, Circulation", "Air, Blood, Chest", "Alert, Breathing, Control", "Airway, Blood, Casualty"],
     answer: 0,
   },
   {
@@ -197,12 +133,7 @@ const questionBank: Question[] = [
   },
   {
     question: "Basic Life Support is indicated in:",
-    options: [
-      "Airway obstruction",
-      "Respiratory arrest",
-      "Cardiac arrest",
-      "All of the above",
-    ],
+    options: ["Airway obstruction", "Respiratory arrest", "Cardiac arrest", "All of the above"],
     answer: 3,
   },
   {
@@ -217,122 +148,62 @@ const questionBank: Question[] = [
   },
   {
     question: "Venous bleeding is generally:",
-    options: [
-      "Bright red and spurting",
-      "Dark red with a steady flow",
-      "Colourless",
-      "Always invisible",
-    ],
+    options: ["Bright red and spurting", "Dark red with a steady flow", "Colourless", "Always invisible"],
     answer: 1,
   },
   {
     question: "Capillary bleeding generally has:",
-    options: [
-      "Slow but even flow",
-      "Strong spurting flow",
-      "No blood flow",
-      "Only internal bleeding",
-    ],
+    options: ["Slow but even flow", "Strong spurting flow", "No blood flow", "Only internal bleeding"],
     answer: 0,
   },
   {
     question: "Bleeding from the surface of the body is called:",
-    options: [
-      "Internal bleeding",
-      "External bleeding",
-      "Cardiac bleeding",
-      "Respiratory bleeding",
-    ],
+    options: ["Internal bleeding", "External bleeding", "Cardiac bleeding", "Respiratory bleeding"],
     answer: 1,
   },
   {
     question: "A decrease in blood volume causes:",
-    options: [
-      "Increase in blood pressure",
-      "Decrease in blood pressure",
-      "No change",
-      "Increase in body height",
-    ],
+    options: ["Increase in blood pressure", "Decrease in blood pressure", "No change", "Increase in body height"],
     answer: 1,
   },
   {
     question: "Which is a method listed in the handout for controlling external bleeding?",
-    options: [
-      "Direct pressure",
-      "Running",
-      "Hot-water bottle",
-      "Giving alcohol",
-    ],
+    options: ["Direct pressure", "Running", "Hot-water bottle", "Giving alcohol"],
     answer: 0,
   },
   {
     question: "A tourniquet is described as:",
-    options: [
-      "A strip of rubber or cloth used to control severe bleeding",
-      "A medicine",
-      "A breathing device",
-      "A thermometer",
-    ],
+    options: ["A strip of rubber or cloth used to control severe bleeding", "A medicine", "A breathing device", "A thermometer"],
     answer: 0,
   },
   {
     question: "The handout limits tourniquet use to:",
-    options: [
-      "Minor scratches",
-      "Severe life-threatening bleeding not controlled by other means",
-      "Every wound",
-      "Headache",
-    ],
+    options: ["Minor scratches", "Severe life-threatening bleeding not controlled by other means", "Every wound", "Headache"],
     answer: 1,
   },
   {
     question: "Shock is a state of:",
-    options: [
-      "Adequate tissue perfusion",
-      "Inadequate tissue perfusion",
-      "Normal circulation only",
-      "Increased appetite",
-    ],
+    options: ["Adequate tissue perfusion", "Inadequate tissue perfusion", "Normal circulation only", "Increased appetite"],
     answer: 1,
   },
   {
     question: "Which can cause shock?",
-    options: [
-      "Severe injury",
-      "Severe bleeding",
-      "Severe burns",
-      "All of the above",
-    ],
+    options: ["Severe injury", "Severe bleeding", "Severe burns", "All of the above"],
     answer: 3,
   },
   {
     question: "Which is a sign or symptom of shock?",
-    options: [
-      "Pale and cold skin",
-      "Very strong normal condition",
-      "Increased appetite",
-      "Normal skin in every case",
-    ],
+    options: ["Pale and cold skin", "Very strong normal condition", "Increased appetite", "Normal skin in every case"],
     answer: 0,
   },
   {
     question: "A casualty in shock should be:",
-    options: [
-      "Reassured and comforted",
-      "Made to run",
-      "Given alcohol",
-      "Allowed to smoke",
-    ],
+    options: ["Reassured and comforted", "Made to run", "Given alcohol", "Allowed to smoke"],
     answer: 0,
   },
   {
     question: "Which type of shock is associated with severe allergic reaction?",
-    options: [
-      "Cardiogenic",
-      "Anaphylactic",
-      "Haemorrhagic",
-      "Electric",
-    ],
+    options: ["Cardiogenic", "Anaphylactic", "Haemorrhagic", "Electric"],
     answer: 1,
   },
   {
@@ -357,12 +228,7 @@ const questionBank: Question[] = [
   },
   {
     question: "Before helping a casualty still in contact with electricity, first:",
-    options: [
-      "Pour water on the casualty",
-      "Switch off the current",
-      "Touch the casualty directly",
-      "Give food",
-    ],
+    options: ["Pour water on the casualty", "Switch off the current", "Touch the casualty directly", "Give food"],
     answer: 1,
   },
   {
@@ -372,52 +238,27 @@ const questionBank: Question[] = [
   },
   {
     question: "Transportation of a casualty should be:",
-    options: [
-      "Safe, steady and speedy",
-      "Slow and unsafe",
-      "Unplanned",
-      "Delayed unnecessarily",
-    ],
+    options: ["Safe, steady and speedy", "Slow and unsafe", "Unplanned", "Delayed unnecessarily"],
     answer: 0,
   },
   {
     question: "A bandage can be used to:",
-    options: [
-      "Hold a dressing in place",
-      "Support a splint",
-      "Support a body part",
-      "All of the above",
-    ],
+    options: ["Hold a dressing in place", "Support a splint", "Support a body part", "All of the above"],
     answer: 3,
   },
   {
     question: "Before entering an enclosed space, the handout requires:",
-    options: [
-      "Risk assessment",
-      "No preparation",
-      "Immediate entry",
-      "Closing all ventilation",
-    ],
+    options: ["Risk assessment", "No preparation", "Immediate entry", "Closing all ventilation"],
     answer: 0,
   },
   {
     question: "An enclosed space should be checked using:",
-    options: [
-      "Oxygen analyzer and gas detector",
-      "Compass only",
-      "Ruler",
-      "Stopwatch only",
-    ],
+    options: ["Oxygen analyzer and gas detector", "Compass only", "Ruler", "Stopwatch only"],
     answer: 0,
   },
   {
     question: "Before enclosed-space entry, a proper ______ should be completed.",
-    options: [
-      "Permit to work and checklist",
-      "Shopping list",
-      "Passenger ticket",
-      "Cargo invoice",
-    ],
+    options: ["Permit to work and checklist", "Shopping list", "Passenger ticket", "Cargo invoice"],
     answer: 0,
   },
 ];
@@ -426,9 +267,8 @@ const TOTAL_QUESTIONS = 30;
 const TEST_TIME = 30 * 60;
 const PASS_MARK = 18;
 
-
-function shuffleQuestions(array: Question[]): Question[] {
-  const copy = array.map((question) => {
+function shuffleQuestions(items: Question[]): Question[] {
+  const copy = items.map((question) => {
     const correctAnswer = question.options[question.answer];
     const options = [...question.options];
 
@@ -452,62 +292,105 @@ function shuffleQuestions(array: Question[]): Question[] {
   return copy.slice(0, TOTAL_QUESTIONS);
 }
 
-
 export default function EFAPracticeCBT() {
-  
-const [mounted, setMounted] = useState(false);
-
+  const [mounted, setMounted] = useState(false);
   const questions = useMemo(() => shuffleQuestions(questionBank), []);
-
-useEffect(() => {
-  setMounted(true);
-}, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(
     Array(TOTAL_QUESTIONS).fill(null)
   );
+
   const [timeLeft, setTimeLeft] = useState(TEST_TIME);
   const [submitted, setSubmitted] = useState(false);
 
- const score: number = answers.reduce<number>((total, answer, index) => {
-  if (answer === questions[index]?.answer) {
-    return total + 1;
-  }
-
-  return total;
-}, 0);
-
-  const answeredCount = answers.filter((answer) => answer !== null).length;
-
-  const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
-
-  const passed = score >= PASS_MARK;
+  const [candidateName, setCandidateName] = useState("");
+  const [rollNo, setRollNo] = useState("");
+  const [testStarted, setTestStarted] = useState(false);
 
   useEffect(() => {
-    if (submitted) return;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!testStarted || submitted) return;
 
     if (timeLeft <= 0) {
       setSubmitted(true);
       return;
     }
 
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+    const timer = window.setInterval(() => {
+      setTimeLeft((previous) => Math.max(0, previous - 1));
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, [timeLeft, submitted]);
+    return () => window.clearInterval(timer);
+  }, [timeLeft, submitted, testStarted]);
+
+  const score = answers.reduce<number>((total, answer, index) => {
+    return total + (answer === questions[index]?.answer ? 1 : 0);
+  }, 0);
+
+  const answeredCount = answers.filter(
+    (answer) => answer !== null
+  ).length;
+
+  const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
+  const passed = score >= PASS_MARK;
+
+  function startTest() {
+    if (!candidateName.trim() || !rollNo.trim()) {
+      window.alert("Please enter Candidate Name and Roll No.");
+      return;
+    }
+
+    setTimeLeft(TEST_TIME);
+    setTestStarted(true);
+  }
 
   function selectAnswer(optionIndex: number) {
     if (submitted) return;
 
-    const updatedAnswers = [...answers];
-    updatedAnswers[currentQuestion] = optionIndex;
-    setAnswers(updatedAnswers);
+    setAnswers((previous) => {
+      const updated = [...previous];
+      updated[currentQuestion] = optionIndex;
+      return updated;
+    });
   }
+useEffect(() => {
+  if (!submitted) return;
 
+  const saveResult = async () => {
+    try {
+      const response = await fetch("/api/results", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          candidate_name: candidateName.trim(),
+          roll_no: rollNo.trim(),
+          course: "EFA",
+          score: score,
+          total_questions: questions.length,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Result save failed");
+      }
+
+      console.log("EFA result saved successfully");
+    } catch (error) {
+      console.error("EFA result saving error:", error);
+    }
+  };
+
+  void saveResult();
+}, [submitted]);
   function submitTest() {
+    if (submitted) return;
+
     const confirmSubmit = window.confirm(
       `You have answered ${answeredCount} of ${TOTAL_QUESTIONS} questions. Submit test?`
     );
@@ -522,20 +405,99 @@ useEffect(() => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
 
-    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(
-      2,
-      "0"
-    )}`;
+    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   }
 
-if (!mounted) {
-  return (
-    <main className="min-h-screen flex items-center justify-center">
-      <p>Loading Practice CBT...</p>
-    </main>
-  );
-}
+  // LOADING SCREEN - PREVENT HYDRATION ERROR
+  if (!mounted) {
+    return (
+      <main className="flex min-h-screen items-center justify-center">
+        <p>Loading Practice CBT...</p>
+      </main>
+    );
+  }
 
+  // CANDIDATE DETAILS FORM
+  if (!testStarted) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-10">
+        <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-lg">
+          <p className="text-center text-sm font-bold uppercase tracking-widest text-emerald-700">
+            SeaPrep Hub
+          </p>
+
+          <h1 className="mt-2 text-center text-2xl font-extrabold text-emerald-900">
+            EFA Practice CBT
+          </h1>
+
+          <p className="mt-3 text-center text-sm text-slate-600">
+            30 Random Questions • 30 Minutes • Pass Mark 60%
+          </p>
+
+          <p className="mt-2 text-center text-sm text-slate-600">
+            Enter your details to start the examination.
+          </p>
+
+          <form
+            className="mt-7 space-y-5"
+            onSubmit={(event) => {
+              event.preventDefault();
+              startTest();
+            }}
+          >
+            <div>
+              <label
+                htmlFor="efa-candidate-name"
+                className="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                Candidate Name
+              </label>
+
+              <input
+                id="efa-candidate-name"
+                type="text"
+                placeholder="Enter Candidate Name"
+                value={candidateName}
+                onChange={(event) => setCandidateName(event.target.value)}
+                maxLength={100}
+                required
+                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="efa-roll-no"
+                className="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                Roll No.
+              </label>
+
+              <input
+                id="efa-roll-no"
+                type="text"
+                placeholder="Enter Roll No."
+                value={rollNo}
+                onChange={(event) => setRollNo(event.target.value)}
+                maxLength={40}
+                required
+                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-emerald-700 px-6 py-3 font-bold text-white hover:bg-emerald-800"
+            >
+              Start CBT
+            </button>
+          </form>
+        </div>
+      </main>
+    );
+  }
+
+  // RESULT PAGE
   if (submitted) {
     return (
       <main className="min-h-screen bg-slate-50 px-4 py-10">
@@ -549,13 +511,19 @@ if (!mounted) {
               Practice CBT Result
             </h1>
 
+            <div className="mx-auto mt-6 max-w-2xl rounded-xl bg-white/15 p-4 text-left">
+              <p className="font-semibold text-white">
+                Candidate Name: {candidateName.trim()}
+              </p>
+              <p className="mt-1 font-semibold text-white">
+                Roll No.: {rollNo.trim()}
+              </p>
+            </div>
+
             <div className="mx-auto mt-7 grid max-w-2xl gap-4 sm:grid-cols-3">
-              <ResultBox label="Score" value={`${score}/30`} />
+              <ResultBox label="Score" value={`${score}/${TOTAL_QUESTIONS}`} />
               <ResultBox label="Percentage" value={`${percentage}%`} />
-              <ResultBox
-                label="Result"
-                value={passed ? "PASS" : "FAIL"}
-              />
+              <ResultBox label="Result" value={passed ? "PASS" : "FAIL"} />
             </div>
 
             <div className="mt-6">
@@ -656,6 +624,7 @@ if (!mounted) {
     );
   }
 
+  // MAIN EXAM PAGE
   const question = questions[currentQuestion];
 
   return (
@@ -698,7 +667,6 @@ if (!mounted) {
 
       <section className="px-4 py-8">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1fr_280px]">
-
           {/* QUESTION AREA */}
           <div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -718,12 +686,12 @@ if (!mounted) {
 
               <div className="mt-6 space-y-3">
                 {question.options.map((option, index) => {
-                  const selected =
-                    answers[currentQuestion] === index;
+                  const selected = answers[currentQuestion] === index;
 
                   return (
                     <button
                       key={index}
+                      type="button"
                       onClick={() => selectAnswer(index)}
                       className={`flex w-full items-center gap-4 rounded-xl border p-4 text-left transition ${
                         selected
@@ -752,10 +720,9 @@ if (!mounted) {
               {/* PREVIOUS / NEXT */}
               <div className="mt-8 flex items-center justify-between gap-3 border-t border-slate-200 pt-6">
                 <button
+                  type="button"
                   onClick={() =>
-                    setCurrentQuestion((prev) =>
-                      Math.max(0, prev - 1)
-                    )
+                    setCurrentQuestion((prev) => Math.max(0, prev - 1))
                   }
                   disabled={currentQuestion === 0}
                   className="rounded-lg border border-slate-300 bg-white px-5 py-3 font-bold text-slate-700 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40"
@@ -765,6 +732,7 @@ if (!mounted) {
 
                 {currentQuestion < TOTAL_QUESTIONS - 1 ? (
                   <button
+                    type="button"
                     onClick={() =>
                       setCurrentQuestion((prev) =>
                         Math.min(TOTAL_QUESTIONS - 1, prev + 1)
@@ -776,6 +744,7 @@ if (!mounted) {
                   </button>
                 ) : (
                   <button
+                    type="button"
                     onClick={submitTest}
                     className="rounded-lg bg-red-600 px-6 py-3 font-bold text-white hover:bg-red-700"
                   >
@@ -786,6 +755,7 @@ if (!mounted) {
             </div>
 
             <button
+              type="button"
               onClick={submitTest}
               className="mt-5 w-full rounded-xl bg-red-600 px-6 py-4 text-lg font-extrabold text-white shadow-sm hover:bg-red-700"
             >
@@ -807,6 +777,7 @@ if (!mounted) {
                 return (
                   <button
                     key={index}
+                    type="button"
                     onClick={() => setCurrentQuestion(index)}
                     className={`flex h-10 items-center justify-center rounded-lg text-sm font-bold transition ${
                       active
@@ -823,18 +794,9 @@ if (!mounted) {
             </div>
 
             <div className="mt-6 space-y-3 border-t border-slate-200 pt-5 text-sm">
-              <Legend
-                className="bg-emerald-600"
-                text="Answered"
-              />
-              <Legend
-                className="bg-slate-100"
-                text="Not Answered"
-              />
-              <Legend
-                className="bg-slate-900"
-                text="Current Question"
-              />
+              <Legend className="bg-emerald-600" text="Answered" />
+              <Legend className="bg-slate-100" text="Not Answered" />
+              <Legend className="bg-slate-900" text="Current Question" />
             </div>
 
             <div className="mt-6 rounded-xl bg-emerald-50 p-4 text-sm text-slate-700">

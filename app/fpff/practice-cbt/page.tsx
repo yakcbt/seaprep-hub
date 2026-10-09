@@ -472,6 +472,26 @@ useEffect(() => {
     Array(30).fill(null)
   );
   const [submitted, setSubmitted] = useState(false);
+const [candidateName, setCandidateName] = useState("");
+const [rollNo, setRollNo] = useState("");
+const [testStarted, setTestStarted] = useState(false);
+
+const [timeLeft, setTimeLeft] = useState(30 * 60);
+
+useEffect(() => {
+  if (!testStarted || submitted) return;
+
+  if (timeLeft <= 0) {
+    setSubmitted(true);
+    return;
+  }
+
+  const timer = setInterval(() => {
+    setTimeLeft((time) => Math.max(0, time - 1));
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, [timeLeft, submitted, testStarted]);
 
   const selectAnswer = (index: number) => {
     if (submitted) return;
@@ -487,6 +507,45 @@ useEffect(() => {
 
   const percentage = Math.round((score / questions.length) * 100);
   const passed = percentage >= 60;
+const saveResult = async () => {
+  try {
+    const response = await fetch("/api/results", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        candidate_name: candidateName.trim(),
+        roll_no: rollNo.trim(),
+        course: "FPFF",
+        score: score,
+        total_questions: questions.length,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Result save failed");
+    }
+
+    console.log("FPFF result saved successfully");
+  } catch (error) {
+    console.error("FPFF result saving error:", error);
+  }
+};
+
+useEffect(() => {
+  if (!submitted) return;
+
+  void saveResult();
+}, [submitted]);
+const startTest = () => {
+  if (!candidateName.trim() || !rollNo.trim()) {
+    alert("Please enter Candidate Name and Roll No.");
+    return;
+  }
+
+  setTestStarted(true);
+};
 
   const submitTest = () => {
     if (!confirm("Are you sure you want to submit the test?")) return;
@@ -500,6 +559,56 @@ if (!mounted) {
     </main>
   );
 }
+
+if (!testStarted) {
+  return (
+    <main className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
+        <h1 className="text-2xl font-bold text-blue-900 text-center">
+          FPFF Practice CBT
+        </h1>
+
+        <p className="mt-2 text-center text-gray-600">
+          Enter your details to start the examination
+        </p>
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            startTest();
+          }}
+          className="mt-6 space-y-4"
+        >
+          <input
+            type="text"
+            placeholder="Candidate Name"
+            value={candidateName}
+            onChange={(e) => setCandidateName(e.target.value)}
+            required
+            className="w-full rounded-lg border p-3"
+          />
+
+          <input
+            type="text"
+            placeholder="Roll No."
+            value={rollNo}
+            onChange={(e) => setRollNo(e.target.value)}
+            required
+            className="w-full rounded-lg border p-3"
+          />
+
+          <button
+            type="submit"
+            className="w-full rounded-lg bg-blue-900 p-3 font-semibold text-white"
+          >
+            Start CBT
+          </button>
+        </form>
+      </div>
+    </main>
+  );
+}
+
   if (submitted) {
     return (
       <main className="min-h-screen bg-slate-50 px-5 py-10">
@@ -513,7 +622,14 @@ if (!mounted) {
             <h1 className="mt-2 text-3xl font-bold text-slate-900">
               Test Result
             </h1>
-
+<div className="mt-4 rounded-lg bg-blue-50 p-4 text-left">
+  <p className="font-semibold text-gray-800">
+    Candidate Name: {candidateName}
+  </p>
+  <p className="font-semibold text-gray-800">
+    Roll No: {rollNo}
+  </p>
+</div>
             <div className="mt-6 text-6xl font-bold text-red-900">
               {score}/{questions.length}
             </div>
@@ -622,7 +738,7 @@ if (!mounted) {
       <div className="mx-auto max-w-5xl px-5 py-8">
 
         {/* PROGRESS */}
-        <div className="mb-5 grid gap-3 sm:grid-cols-3">
+        <div className="mb-5 grid gap-3 sm:grid-cols-4">
           <div className="rounded-xl bg-white p-4 shadow-sm">
             <p className="text-sm text-slate-500">Question</p>
             <p className="text-xl font-bold text-red-900">
@@ -643,6 +759,13 @@ if (!mounted) {
               {questions.length - answered}
             </p>
           </div>
+          <div className="rounded-xl bg-white p-4 shadow-sm">
+  <p className="text-sm text-slate-500">Time Left</p>
+  <p className="text-xl font-bold text-blue-900">
+    {String(Math.floor(timeLeft / 60)).padStart(2, "0")}:
+    {String(timeLeft % 60).padStart(2, "0")}
+  </p>
+</div>
         </div>
 
         {/* QUESTION */}

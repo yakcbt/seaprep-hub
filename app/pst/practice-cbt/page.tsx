@@ -481,10 +481,11 @@ useEffect(() => {
   );
   const [submitted, setSubmitted] = useState(false);
   const [timeLeft, setTimeLeft] = useState(TEST_TIME);
-
+const [candidateName, setCandidateName] = useState("");
+const [rollNo, setRollNo] = useState("");
+const [testStarted, setTestStarted] = useState(false);
   useEffect(() => {
-    if (submitted) return;
-
+    if (!testStarted || submitted) return;
     if (timeLeft <= 0) {
       setSubmitted(true);
       return;
@@ -495,7 +496,7 @@ useEffect(() => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, submitted]);
+  }, [timeLeft, submitted, testStarted]);
 
   const selectAnswer = (optionIndex: number) => {
     if (submitted) return;
@@ -518,10 +519,46 @@ useEffect(() => {
   const answered = answers.filter(
     (answer) => answer !== null
   ).length;
+const saveResult = async () => {
+  try {
+    const response = await fetch("/api/results", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        candidate_name: candidateName.trim(),
+        roll_no: rollNo.trim(),
+        course: "PST",
+        score: score,
+        total_questions: questions.length,
+      }),
+    });
 
+    if (!response.ok) {
+      throw new Error("Result save failed");
+    }
+
+    console.log("PST result saved successfully");
+  } catch (error) {
+    console.error("PST result saving error:", error);
+  }
+};
+useEffect(() => {
+  if (!submitted) return;
+
+  void saveResult();
+}, [submitted]);
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
+const startTest = () => {
+  if (!candidateName.trim() || !rollNo.trim()) {
+    alert("Please enter Candidate Name andif (!mounted) { Roll No.");
+    return;
+  }
 
+  setTestStarted(true);
+};
   const submitTest = () => {
     const ok = window.confirm(
       "Are you sure you want to submit the PST Practice CBT?"
@@ -540,7 +577,54 @@ if (!mounted) {
     </main>
   );
 }
+if (!testStarted) {
+  return (
+    <main className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
+        <h1 className="text-2xl font-bold text-blue-900 text-center">
+          PST Practice CBT
+        </h1>
 
+        <p className="mt-2 text-center text-gray-600">
+          Enter your details to start the examination
+        </p>
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            startTest();
+          }}
+          className="mt-6 space-y-4"
+        >
+          <input
+            type="text"
+            placeholder="Candidate Name"
+            value={candidateName}
+            onChange={(e) => setCandidateName(e.target.value)}
+            required
+            className="w-full rounded-lg border p-3"
+          />
+
+          <input
+            type="text"
+            placeholder="Roll No."
+            value={rollNo}
+            onChange={(e) => setRollNo(e.target.value)}
+            required
+            className="w-full rounded-lg border p-3"
+          />
+
+          <button
+            type="submit"
+            className="w-full rounded-lg bg-blue-900 p-3 font-semibold text-white"
+          >
+            Start CBT
+          </button>
+        </form>
+      </div>
+    </main>
+  );
+}
   if (submitted) {
     return (
       <main className="min-h-screen bg-slate-50 px-5 py-10">
@@ -550,7 +634,14 @@ if (!mounted) {
             <p className="text-sm font-bold uppercase tracking-widest text-blue-600">
               PST Practice CBT
             </p>
-
+<div className="mt-4 rounded-lg bg-blue-50 p-4 text-left">
+  <p className="font-semibold text-gray-800">
+    Candidate Name: {candidateName}
+  </p>
+  <p className="font-semibold text-gray-800">
+    Roll No: {rollNo}
+  </p>
+</div>
             <h1 className="mt-2 text-3xl font-bold text-slate-900">
               Test Result
             </h1>
